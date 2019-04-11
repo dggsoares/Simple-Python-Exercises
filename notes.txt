@@ -1,0 +1,158 @@
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+openssl x509 -in selfsigned.pem -text -noout
+
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import ssl
+import time
+
+HOST_NAME = 'localhost'
+PORT_NUMBER = 8080
+
+
+https://piware.de/2011/01/creating-an-https-server-in-python/
+https://medium.com/@andrewklatzke/creating-a-python3-webserver-from-the-ground-up-4ff8933ecb96
+https://github.com/priyankgada/python-for-hackers
+https://justus.science/blog/2015/04/19/sys.modules-is-dangerous.html
+https://gist.github.com/bloodearnest/9017111a313777b9cce5
+https://github.com/darkerego/pysslShells/tree/master/reverse
+https://www.techcoil.com/blog/how-to-download-a-file-via-http-post-and-http-get-with-python-3-requests-library/
+
+Conceitos básicos da linguagem
+        Variáveis
+        str
+                ord()
+                chr(ord('a'))
+        f strings
+        Estrutura de dados
+                Listas
+                        a[x:y:z]
+                Dict
+                        for key, value in foo.items():
+                Set and tuples
+                        set('fooooooooooooo')
+                        tuple('foo')
+                        tuple = tuple + ('New value',)
+                Iterators and generators
+        if main
+
+Python is a preferred programming language for forensics due to its ease of use, library support, detailed documentation, and interoperability among operating systems.
+
+
+# Pythonic ways of checking if all
+# items in a list are equal:
+
+>>> lst = ['a', 'a', 'a']
+
+>>> len(set(lst)) == 1
+True
+
+>>> all(x == lst[0] for x in lst)
+True
+
+>>> lst.count(lst[0]) == len(lst)
+True
+
+# I ordered those from "most Pythonic" to "least Pythonic"
+# and  "least efficient" to "most efficient".
+# The len(set()) solution is idiomatic,  but constructing
+# a set is less efficient memory and speed-wise.
+
+https://github.com/mantarayforensics/mantaray
+https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788996921
+https://subscription.packtpub.com/book/networking_and_servers/9781788990820
+https://subscription.packtpub.com/book/networking_and_servers/9781789133226
+https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781789534207
+https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781789534207
+
+
+https://realpython.com/python-type-checking/
+https://realpython.com/python-data-classes/
+https://realpython.com/primer-on-python-decorators/
+https://realpython.com/python-f-strings/
+https://realpython.com/python-random/
+https://treyhunner.com/2018/02/python-3-s-range-better-than-python-2-s-xrange/
+
+http://pynash.org/2013/03/06/timing-and-profiling/
+
+Second, as of Python 3.3, its presence is no longer required to make a folder be interpreted as a Python package.
+
+Sphinx is probably the most widely used tool for creating Python documentation. In fact, the official Python documentation was written with it. It's definitely worth spending some time checking it out.
+
+http://aspn.activestate.com/ASPN/Python/Cookbook/
+http://www.python.org.br/
+pydoc -p 8000
+pydoc -g
+
+List, filter map ->
+>>> import this...Explicit is better than implicit.Simple is better than complex....Readability counts....If the implementation is hard to explain, it's a bad idea....
+
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import ssl
+import time
+
+HOST_NAME = 'localhost'
+PORT_NUMBER = 8080
+
+
+class Server(BaseHTTPRequestHandler):  # MyHandler defines what we should do when we receive a GET/POST request
+
+    def do_HEAD(self):
+        return
+
+    def do_GET(self):
+        self.respond()
+
+    def do_POST(self):
+        return
+
+    def handle_http(self, status, content_type):
+        self.send_response(status)
+        self.send_header('Content - type', content_type)
+        self.end_headers()
+        return bytes('HelloWorld', 'utf-8')
+
+    def respond(self):
+        content = self.handle_http(200, 'text/html')
+        self.wfile.write(content)
+
+
+if __name__ == '__main__':
+    httpd = HTTPServer((HOST_NAME, PORT_NUMBER), BaseHTTPRequestHandler)
+    httpd.socket = ssl.wrap_socket(httpd.socket, certfile='cert.pem', keyfile='key.pem', server_side=True)
+
+    try:
+        print(f'[+] {time.asctime()} Server is RUNNING! - {HOST_NAME}:{PORT_NUMBER}')
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        httpd.server_close()
+        print(f'[x] {time.asctime()} Server is DOWN! - {HOST_NAME}:{PORT_NUMBER}')
+
+    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+openssl x509 -in selfsigned.pem -text -noout
+
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import ssl
+import time
+
+HOST_NAME = 'localhost'
+PORT_NUMBER = 8080
+
+
+https://piware.de/2011/01/creating-an-https-server-in-python/
+https://medium.com/@andrewklatzke/creating-a-python3-webserver-from-the-ground-up-4ff8933ecb96
+https://github.com/priyankgada/python-for-hackers
+https://justus.science/blog/2015/04/19/sys.modules-is-dangerous.html
+https://gist.github.com/bloodearnest/9017111a313777b9cce5
+https://github.com/darkerego/pysslShells/tree/master/reverse
+https://www.techcoil.com/blog/how-to-download-a-file-via-http-post-and-http-get-with-python-3-requests-library/
+
+https://www.veil-framework.com/veil-tutorial/
+https://samsclass.info/old-classes.html
+https://samsclass.info/127/127_WWC_IL_2017.shtml
+https://samsclass.info/124/proj14/p8-av.htm
+https://pen-testing.sans.org/blog/2011/10/13/tips-for-evading-anti-virus-during-pen-testing#
+https://samsclass.info/124/VP2018.shtml
+https://www.csee.umbc.edu/wp-content/uploads/2014/05/ViolentPython-ICEW-2014.pdf
+
