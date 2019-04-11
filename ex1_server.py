@@ -5,7 +5,7 @@ HOST = '0.0.0.0'
 PORT = 30001
 
 
-class AsciiArt():
+class AsciiArt:
     def __init__(self):
         self.welcome = '''\
                          uuuuuuu
