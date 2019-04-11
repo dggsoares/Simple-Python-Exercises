@@ -2,7 +2,7 @@
 
 import socket
 
-HOST = 'insidertips.xyz'
+HOST = 'localhost'
 PORT = 30001
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
