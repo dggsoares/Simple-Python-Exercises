@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-#### Testando GITHUB!
-#### Testando GITHUB!
-#### Testando GITHUB!
-#### Testando GITHUB!
-#### Testando GITHUB!
 import socket
 
 HOST = '0.0.0.0'
