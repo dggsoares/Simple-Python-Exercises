@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
-#### Testando GITHUB!
-#### Testando GITHUB!
-#### Testando GITHUB!
-#### Testando GITHUB!
-#### Testando GITHUB!
 import socket
 
 HOST = '0.0.0.0'
 PORT = 30001
 
 
-class AsciiArt():
+class AsciiArt:
     def __init__(self):
         self.welcome = '''\
                          uuuuuuu

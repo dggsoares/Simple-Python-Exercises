@@ -1,0 +1,45 @@
+Windows Virtual Machine
+	General Configurations
+		Users
+			Administrator > System Administrator
+			bob > Regular User + RDP
+		Keyboard
+		Time Zone
+		Bginfo
+		Shared folder
+		Small icons
+	Softwares
+		notepad2
+		Sublime Text 3
+			http://www.gtlambert.com/blog/python-sublime-text-3
+		Pycharm 2018.3
+			JRE
+	Python dependencies
+		Python 3.7.2
+
+Servidor blackhat
+	Anti ddos firewall
+	https://github.com/banago/simple-php-website
+	R8 - CTF System https://github.com/mhils/r8
+	Root The Box https://github.com/moloch--/RootTheBox
+	FBCTF - https://github.com/facebook/fbctf
+	https://github.com/mcpa-stlouis/hack-the-arch
+	https://github.com/Nakiami/mellivora
+	https://github.com/UnrealAkama/NightShade XXXX
+	https://github.com/easyctf/librectf
+	https://github.com/apsdehal/awesome-ctf
+
+
+Demonstration
+	1 - Echo server (Devolve o que foi enviado)
+	Star Wars history
+Exercicios
+	1 - Correct Message Python Sockets (Enviar a mensagem correta com python)
+
+https://www.veil-framework.com/veil-tutorial/
+https://samsclass.info/old-classes.html
+https://samsclass.info/127/127_WWC_IL_2017.shtml
+https://samsclass.info/124/proj14/p8-av.htm
+https://pen-testing.sans.org/blog/2011/10/13/tips-for-evading-anti-virus-during-pen-testing#
+https://samsclass.info/124/VP2018.shtml
+https://www.csee.umbc.edu/wp-content/uploads/2014/05/ViolentPython-ICEW-2014.pdf
