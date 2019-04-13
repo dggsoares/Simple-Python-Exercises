@@ -75,3 +75,5 @@ p.stdin.write(b'echo hello world\n')
 p.stdout.readline()
 p.stdin.write(b'ipconfig')
 p.stdout.readline()
+
+https://medium.com/@andrewklatzke/creating-a-python3-webserver-from-the-ground-up-4ff8933ecb96
