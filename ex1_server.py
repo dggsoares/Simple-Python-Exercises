@@ -36,7 +36,7 @@ class AsciiArt:
             $$$"                         $$$$"
 
     Welcome to IV International Cyber Defense Course
-                Enjoy Python Hacking!!!
+                Enjoy Offensive Python!!!
 '''.encode()
         self.wrong = '''\
     +---------------------------------------------+
