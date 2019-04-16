@@ -242,3 +242,5 @@ cprint("[!]Error happend with sockets ..","red")
 
 https://hakin9.org/download/step-by-step-guide-to-learning-python/
 https://www.testbytes.net/blog/python-for-cyber-security/
+
+https://codecalamity.com/run-subprocess-run/
