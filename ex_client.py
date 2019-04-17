@@ -2,7 +2,7 @@
 
 import socket
 
-HOST = 'localhost'
+HOST = '127.0.0.1'
 PORT = 30001
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
