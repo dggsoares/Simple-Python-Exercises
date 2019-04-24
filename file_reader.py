@@ -1,3 +1,7 @@
-with open('file.txt', 'rb') as f:
-    data = f.read().decode()
+with open('file.txt', 'r') as f:
+    data = f.read()
     print(data)
+
+with open('file.txt', 'w') as f:
+    data = 'Data to write in file'
+    f.write(data)
