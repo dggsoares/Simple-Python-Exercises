@@ -284,3 +284,10 @@ Forging your own weapons to solve
 your own problems makes you a true penetration tester.
 
 https://github.com/ciccio-87/Python-AV-Evasion/blob/master/cryptshell.py
+https://github.com/MaroGenio/Meta_Python/blob/master/Meta_Py.py
+
+memorywithshell = create_string_buffer(shellcode, len(shellcode))
+shell = cast(memorywithshell, CFUNCTYPE(c_void_p))
+shell()
+
+https://pen-testing.sans.org/blog/2011/10/13/tips-for-evading-anti-virus-during-pen-testing
