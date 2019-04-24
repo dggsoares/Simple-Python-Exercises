@@ -30,6 +30,9 @@ Servidor blackhat
 	https://github.com/apsdehal/awesome-ctf
 
 
+Welcome
+	Página retornada por curl ou wget
+	https://httpd.apache.org/docs/2.4/rewrite/remapping.html
 Demonstration
 	1 - Echo server (Devolve o que foi enviado)
 	Star Wars history
@@ -243,4 +246,48 @@ cprint("[!]Error happend with sockets ..","red")
 https://hakin9.org/download/step-by-step-guide-to-learning-python/
 https://www.testbytes.net/blog/python-for-cyber-security/
 
-https://codecalamity.com/run-subprocess-run/
+https://realpython.com/documenting-python-code/
+https://realpython.com/python-sockets/
+
+https://stackoverflow.com/questions/23140638/persistent-subprocess-popen-session
+https://stackoverflow.com/questions/8980050/persistent-python-subprocess
+https://stackoverflow.com/questions/589093/python-persistent-popen
+https://stackoverflow.com/questions/3076542/how-can-i-read-all-availably-data-from-subprocess-popen-stdout-non-blocking
+https://stackoverflow.com/questions/8980050/persistent-python-subprocess
+https://github.com/UNIVALI-LITE/Portugol-Studio/wiki/Contribuindo-com-o-projeto
+
+https://pymotw.com/2/SocketServer/
+httpbin.org
+ 0.9.3 
+
+ https://daanlenaerts.com/blog/2015/06/03/create-a-simple-http-server-with-python-3/
+
+ https://nitratine.net/blog/post/asymmetric-encryption-and-decryption-in-python/
+
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+
+iptables -D INPUT -i lo -j ACCEPT
+iptables -D INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+iptables -D INPUT -j DROP
+iptables -D INPUT -s 192.168.246.1/32 -p tcp -m tcp --dport 22 -j ACCEPT
+
+
+iptables -D INPUT -m conntrack --ctstate INVALID -j DROP
+
+https://www.digitalocean.com/community/tutorials/how-to-use-port-knocking-to-hide-your-ssh-daemon-from-attackers-on-ubuntu#status-deprecated
+https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules#delete-rule-by-specification
+https://pymotw.com/2/select/
+
+Forging your own weapons to solve
+your own problems makes you a true penetration tester.
+
+https://github.com/ciccio-87/Python-AV-Evasion/blob/master/cryptshell.py
+https://github.com/MaroGenio/Meta_Python/blob/master/Meta_Py.py
+
+memorywithshell = create_string_buffer(shellcode, len(shellcode))
+shell = cast(memorywithshell, CFUNCTYPE(c_void_p))
+shell()
+
+https://pen-testing.sans.org/blog/2011/10/13/tips-for-evading-anti-virus-during-pen-testing
