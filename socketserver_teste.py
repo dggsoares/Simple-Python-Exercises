@@ -51,5 +51,3 @@ if __name__ == '__main__':
                 server.shutdown()
             for thread in custom_tcp_servers_threads:
                 thread.join()
-
-
