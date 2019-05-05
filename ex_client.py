@@ -3,12 +3,12 @@
 import socket
 
 HOST = '127.0.0.1'
-PORT = 30001
+PORT = 30005
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
     print(s.recv(4096).decode())
-    s.sendall('Hello Word from Python Sockets!'.encode())
+    s.sendall('Hello Word!'.encode())
     data = s.recv(4096)
 
 print(f'{data.decode()}')

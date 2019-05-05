@@ -1,82 +1,63 @@
-#!/usr/bin/env python3
-import socket
+import coloredlogs, logging
+import threading
+import socketserver
+import time
+import sys
 
-HOST = '0.0.0.0'
-PORT = 30001
+from exercises import *
 
-
-class AsciiArt:
-    def __init__(self):
-        self.welcome = '''\
-                         uuuuuuu
-                     uu$$$$$$$$$$$uu
-                  uu$$$$$$$$$$$$$$$$$uu
-                 u$$$$$$$$$$$$$$$$$$$$$u
-                u$$$$$$$$$$$$$$$$$$$$$$$u
-               u$$$$$$$$$$$$$$$$$$$$$$$$$u
-               u$$$$$$$$$$$$$$$$$$$$$$$$$u
-               u$$$$$$"   "$$$"   "$$$$$$u
-               "$$$$"      u$u       $$$$"
-                $$$u       u$u       u$$$
-                $$$u      u$$$u      u$$$
-                 "$$$$uu$$$   $$$uu$$$$"
-                  "$$$$$$$"   "$$$$$$$"
-                    u$$$$$$$u$$$$$$$u
-                     u$"$"$"$"$"$"$u
-          uuu        $$u$ $ $ $ $u$$       uuu
-         u$$$$        $$$$$u$u$u$$$       u$$$$
-          $$$$$uu      "$$$$$$$$$"     uu$$$$$$
-        u$$$$$$$$$$$uu    """""    uuuu$$$$$$$$$$
-        $$$$"""$$$$$$$$$$uuu   uu$$$$$$$$$"""$$$"
-          """      ""$$$$$$$$$$$uu ""$"""
-                   uuuu ""$$$$$$$$$$uuu
-          u$$$uuu$$$$$$$$$uu ""$$$$$$$$$$$uuu$$$
-          $$$$$$$$$$""""           ""$$$$$$$$$$$"
-          "$$$$$"                      ""$$$$""
-            $$$"                         $$$$"
-
-    Welcome to IV International Cyber Defense Course
-                Enjoy Offensive Python!!!
-'''.encode()
-        self.wrong = '''\
-    +---------------------------------------------+
-    |        INCORRECT MESSAGE, TRY AGAIN! :(     |
-    +---------------------------------------------+
-        '''.encode()
-        self.correct = '''\
-    +---------------------------------------------+
-    |               CORRECT MESSAGE! :)           |
-    +---------------------------------------------+
-    | The Flag is: PYTHON{P1th0nH3llOFromS0CK3T$} |
-    +---------------------------------------------+
-'''.encode()
+logger = logging.getLogger(__name__)
+coloredlogs.install(level='DEBUG',
+                    logger=logger,
+                    fmt='%(asctime)s %(hostname)s %(name)s[%(process)d] %(levelname)s %(message)s',
+                    datefmt='%d-%m-%y %H:%M:%S'
+                    )
 
 
-message = AsciiArt()
+class CustomTCPServerHandler(socketserver.BaseRequestHandler):
 
-while True:
-    try:
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.bind((HOST, PORT))
-            s.listen(1)
-            print('[+] EX1 Server running waiting connections...')
-            conn, addr = s.accept()
-            with conn:
-                print('Connected by', addr)
-                conn.sendall(message.welcome)
-                while True:
-                    data = conn.recv(4096).decode()
-                    print(data)
-                    if 'Hello Word from Python Sockets!' in data:
-                        conn.sendall(message.correct)
-                        conn.close()
-                        s.close()
-                    else:
-                        conn.sendall(message.wrong)
-    except BrokenPipeError as error:
-        pass
-    except ConnectionAbortedError as error:
-        pass
-    except KeyboardInterrupt:
-        print('CTRL+C pressed...')
-        exit(0)
+    def handle(self):
+        exercise = Ex14()
+        self.request.send(exercise.welcome)
+        data = self.request.recv(2048).decode()
+        cur_thread = threading.currentThread().getName()
+        client_ip, client_port = self.client_address
+        logger.info(f'Client IP {client_ip}:{client_port} is connected in thread: {cur_thread} on port: XX')
+        if data == exercise.answer:
+            self.request.send(exercise.correct)
+            logger.info(f'Client IP {client_ip}:{client_port}, CORRECT')
+        else:
+            self.request.send(exercise.wrong)
+            logger.info(f'Client IP {client_ip}:{client_port}, WRONG "{data}"')
+        return
+
+
+class CustomTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+
+    def __init__(self, server_address, handler_class):
+        socketserver.TCPServer.__init__(self, server_address, handler_class)
+        socketserver.TCPServer.allow_reuse_address = True
+        socketserver.ThreadingMixIn.daemon_threads = True
+        return
+
+
+if __name__ == '__main__':
+
+    custom_tcp_servers = []
+    custom_tcp_servers_threads = []
+
+    for port in range(30000, 30011):
+        server = CustomTCPServer(('', port), CustomTCPServerHandler)
+        custom_tcp_servers.append(server)
+        thread = threading.Thread(target=server.serve_forever)
+        thread.daemon = True
+        thread.start()
+        logger.debug(f'{thread.getName()} is run on port: {server.server_address}')
+        custom_tcp_servers_threads.append(thread)
+
+    while True:
+        try:
+            time.sleep(1)
+        except KeyboardInterrupt as e:
+            logger.info('Shutting down servers...')
+            sys.exit(0)

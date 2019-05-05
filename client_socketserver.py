@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     clients_threads = []
 
-    for i in range(1500):
+    for i in range(20):
         client = ClientThread()
         client.start()
         clients_threads.append(client)

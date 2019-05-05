@@ -80,6 +80,8 @@ class EchoServer(socketserver.TCPServer):
     def shutdown(self):
         self.logger.debug('shutdown()')
         return socketserver.TCPServer.shutdown(self)
+
+
 if __name__ == '__main__':
     import socket
     import threading
