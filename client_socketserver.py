@@ -4,7 +4,7 @@ import random
 import string
 import base64
 
-ADDRESS = ('localhost', 30001)
+ADDRESS = ('178.128.157.183', 30001)
 
 
 def gera_lixo():
@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     clients_threads = []
 
-    for i in range(20):
+    for i in range(10):
         client = ClientThread()
         client.start()
         clients_threads.append(client)

@@ -2,8 +2,8 @@
 
 import socket
 
-HOST = '127.0.0.1'
-PORT = 30005
+HOST = '178.128.157.183'
+PORT = 30030
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))

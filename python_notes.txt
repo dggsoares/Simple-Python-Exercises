@@ -299,3 +299,7 @@ https://pen-testing.sans.org/blog/2011/10/13/tips-for-evading-anti-virus-during-
 
 https://github.com/malwaredllc/byob
 https://github.com/sweetsoftware/Ares
+
+https://pymotw.com/3/socketserver/
+https://gist.github.com/pklaus/c4c37152e261a9e9331f
+http://kmkeen.com/socketserver/2009-02-07-07-52-15.html
