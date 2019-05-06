@@ -1,7 +1,30 @@
 import socketserver
 import threading
-
+import random
+import base64
 from custom_logger import *
+
+ZEN_OF_PYTHON = [
+    'Beautiful is better than ugly.',
+    'Explicit is better than implicit.',
+    'Simple is better than complex.',
+    'Complex is better than complicated.',
+    'Flat is better than nested.',
+    'Sparse is better than dense.',
+    'Readability counts.',
+    "Special cases aren't special enough to break the rules.",
+    'Although practicality beats purity.',
+    'Errors should never pass silently.',
+    'Unless explicitly silenced.',
+    'In the face of ambiguity, refuse the temptation to guess.',
+    'There should be one-- and preferably only one --obvious way to do it.',
+    "Although that way may not be obvious at first unless you're Dutch.",
+    'Now is better than never.',
+    'Although never is often better than *right* now.',
+    "If the implementation is hard to explain, it's a bad idea.",
+    'If the implementation is easy to explain, it may be a good idea.',
+    "Namespaces are one honking great idea -- let's do more of those!"
+]
 
 
 class Exercise(socketserver.BaseRequestHandler):
@@ -62,13 +85,16 @@ class Ex14(Exercise):
         Exercise.__init__(self, request, client_address, server)
 
     def handle(self):
-        self.request.send(self.welcome)
-        data = self.request.recv(2048).decode()
+        # Client logging
         cur_thread = threading.currentThread().getName()
         client_ip, client_port = self.client_address
         logger.info(
             f'{self.name} | {client_ip}:{client_port} is connected in {cur_thread} on port: '
             f'{self.server.server_address[1]}')
+
+        self.request.send(self.welcome)  # Welcome message
+        data = self.request.recv(2048).decode()  # Client response
+
         if data == self.answer:
             self.request.send(self.correct)
             logger.info(f'{self.name} | {client_ip}:{client_port}, CORRECT!')
@@ -82,35 +108,23 @@ class Ex15(Exercise):
     def __init__(self, request, client_address, server):
         self.name = 'Ex15'
         self.description = 'Base64 Decode?'
-        self.welcome = '''\
-                         .88888888:.
-                        88888888.88888.
-                      .8888888888888888.
-                      888888888888888888
-                      88' _`88'_  `88888
-                      88 88 88 88  88888
-                      88_88_::_88_:88888
-                      88:::,::,:::::8888
-                      88`:::::::::'`8888
-                     .88  `::::'    8:88.
-                    8888            `8:888.
-                  .8888'             `888888.
-                 .8888:..  .::.  ...:'8888888:.
-                .8888.'     :'     `'::`88:88888
-               .8888        '         `.888:8888.
-              888:8         .           888:88888
-            .888:88        .:           888:88888:
-            8888888.       ::           88:888888
-            `.::.888.      ::          .88888888
-           .::::::.888.    ::         :::`8888'.:.
-          ::::::::::.888   '         .::::::::::::
-          ::::::::::::.8    '      .:8::::::::::::.
-         .::::::::::::::.        .:888:::::::::::::
-         :::::::::::::::88:.__..:88888:::::::::::'
-          `'.:::::::::::88888888888.88:::::::::'
-                `':::_:' -- '' -'-' `':_::::'`
-
-                 EXERCISE 1.5 - Base64 Decode?
+        self.welcome = '''
+                     ---_ ......._-_--.
+                    (|\ /      / /| \\
+                    /  /     .'  -=-'   `.
+                   /  /    .'             )
+                 _/  /   .'        _.)   /
+                / o   o        _.-' /  .'
+                \          _.-'    / .'*|
+                 \______.-'//    .'.' \*|
+                  \|  \ | //   .'.' _ |*|
+                   `   \|//  .'.'_ _ _|*|
+                    .  .// .'.' | _ _ \*|
+                    \`-|\_/ /    \ _ _ \*
+                    `/'\__/       \ _ _ \*
+                    /^|            \ _ _ \*
+                   '  `             \ _ _\_
+                EXERCISE 1.5 - Base64 Decode?
     '''.encode()
         self.wrong = '''\
         +---------------------------------------------+
@@ -124,17 +138,21 @@ class Ex15(Exercise):
         | The Flag is: PYTHON{P1th0nGr@tzf0rB@se64dec0d3} |
         +-------------------------------------------------+
     '''.encode()
-        self.answer = 'XXXXXX'  # TODO criar lógica do exercício
+        self.answer = ''
         Exercise.__init__(self, request, client_address, server)
 
     def handle(self):
-        self.request.send(self.welcome)
-        data = self.request.recv(2048).decode()
+        # Client logging
         cur_thread = threading.currentThread().getName()
         client_ip, client_port = self.client_address
         logger.info(
             f'{self.name} | {client_ip}:{client_port} is connected in {cur_thread} on port: '
             f'{self.server.server_address[1]}')
+
+        self.request.send(self.welcome)
+        self.request.send(self.create_prhase())  # Phrase challenge
+        data = self.request.recv(1024).decode()  # Client response
+
         if data == self.answer:
             self.request.send(self.correct)
             logger.info(f'{self.name} | {client_ip}:{client_port}, CORRECT!')
@@ -142,6 +160,11 @@ class Ex15(Exercise):
             self.request.send(self.wrong)
             logger.info(f'{self.name} | {client_ip}:{client_port}, WRONG "{data}"')
         return
+
+    def create_prhase(self):
+        phrase = random.choice(ZEN_OF_PYTHON)
+        self.answer = phrase[:10]
+        return base64.b64encode(phrase.encode())
 
 
 class Ex16(Exercise):
@@ -164,7 +187,8 @@ class Ex16(Exercise):
                     |___|   /|\   |___|
                     `---'  |___|  `---'
                            `---'
-                EXERCISE 1.6 - Math Using Sockets!
+            EXERCISE 1.6 - Math Using Sockets!
+             operators = ['+', '-', '*', '/']
     '''.encode()
         self.wrong = '''\
         +---------------------------------------------+
@@ -178,21 +202,45 @@ class Ex16(Exercise):
         | The Flag is: PYTHON{P1th0nDoM@thwithS0ck3t$} |
         +----------------------------------------------+
     '''.encode()
-        self.answer = 'XXXX'  # TODO fazer a lógica do exercício
+        self.answer = ''
         Exercise.__init__(self, request, client_address, server)
 
     def handle(self):
-        self.request.send(self.welcome)
-        data = self.request.recv(2048).decode()
+        # Client logging
         cur_thread = threading.currentThread().getName()
         client_ip, client_port = self.client_address
         logger.info(
             f'{self.name} | {client_ip}:{client_port} is connected in {cur_thread} on port: '
             f'{self.server.server_address[1]}')
-        if data == self.answer:
-            self.request.send(self.correct)
-            logger.info(f'{self.name} | {client_ip}:{client_port}, CORRECT!')
+
+        self.request.send(self.welcome)  # Welcome message
+
+        self.request.send(self.create_challenge())  # First Challenge
+        first_response = self.request.recv(1024).decode()  # Client response
+
+        if first_response == self.answer:
+            logger.info(f'{self.name} | {client_ip}:{client_port}, step 1 CORRECT!')
+            self.request.send(self.create_challenge())  # Second challenge
+            second_response = self.request.recv(1024).decode()  # Client response
+
+            if second_response == self.answer:
+                logger.info(f'{self.name} | {client_ip}:{client_port}, step 2 CORRECT!')
+                self.request.send(self.create_challenge())  # Three challenge
+                third_response = self.request.recv(1024).decode()  # Client response
+
+                if third_response == self.answer:
+                    logger.info(f'{self.name} | {client_ip}:{client_port}, step 3 CORRECT!')
+                    self.request.send(self.correct)  # Correct answer for challenge
+
         else:
             self.request.send(self.wrong)
-            logger.info(f'{self.name} | {client_ip}:{client_port}, WRONG "{data}"')
         return
+
+    def create_challenge(self):
+        operators = ['+', '-', '*', '/']
+        a = random.randint(1, 1000)
+        b = random.randint(1, 1000)
+        operator = random.choice(operators)
+        self.answer = str(eval(f'{a}{operator}{b}'))
+        expression = f'{a}&{b}&{operator}'
+        return expression.encode()
