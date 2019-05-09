@@ -9,4 +9,3 @@ for port in ports:
     s.setblocking(False)
     s.connect_ex((host, port))
     s.close()
-w
