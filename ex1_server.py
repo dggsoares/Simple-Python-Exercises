@@ -1,5 +1,4 @@
 import time
-import sys
 
 from exercises import *
 from custom_logger import *
@@ -33,6 +32,7 @@ if __name__ == '__main__':
     create_server_exercise(30000, 30010, Ex14)
     create_server_exercise(30020, 30030, Ex15)
     create_server_exercise(30040, 30050, Ex16)
+    create_server_exercise(45000, 45010, SocketSample)
 
     while True:
         try:

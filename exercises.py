@@ -244,3 +244,22 @@ class Ex16(Exercise):
         self.answer = str(eval(f'{a}{operator}{b}'))
         expression = f'{a}&{b}&{operator}'
         return expression.encode()
+
+
+class SocketSample(Exercise):
+    def __init__(self, request, client_address, server):
+        self.name = 'SocketSample'
+        self.description = 'Just a socket sample!'
+        self.welcome = random.choice(ZEN_OF_PYTHON).encode()
+        Exercise.__init__(self, request, client_address, server)
+
+    def handle(self):
+        # Client logging
+        cur_thread = threading.currentThread().getName()
+        client_ip, client_port = self.client_address
+        logger.info(
+            f'{self.name} | {client_ip}:{client_port} is connected in {cur_thread} on port: '
+            f'{self.server.server_address[1]}')
+
+        self.request.send(self.welcome)  # Just send welcome message
+        return
