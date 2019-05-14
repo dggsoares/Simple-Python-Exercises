@@ -307,3 +307,5 @@ https://github.com/sweetsoftware/Ares
 https://pymotw.com/3/socketserver/
 https://gist.github.com/pklaus/c4c37152e261a9e9331f
 http://kmkeen.com/socketserver/2009-02-07-07-52-15.html
+
+https://gist.github.com/fdiskyou/7a145ed0dd652c30e6868e64d221b314
