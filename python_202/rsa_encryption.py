@@ -72,7 +72,6 @@ def decrypt_message(key, message):
 
 
 def encrypt_file(key, file):
-    # TODO fix this function
     encrypted_file = bytes()
     chunk = 256
     with open(file, "rb") as f:
@@ -88,7 +87,6 @@ def encrypt_file(key, file):
 
 
 def decrypt_file(key, file):
-    # TODO fix this function
     original_file = bytes()
     chunk = 256
     with open(file, "rb") as f:

@@ -9,7 +9,7 @@ location = "Massachusetts Institute of Technology"
 
 params = {'address': location}
 
-r = requests.get(url=URL, params=params, proxies=proxyDict)
+r = requests.get(url=URL, params=params)
 
 data = r.text
 

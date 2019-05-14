@@ -1,5 +1,6 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
+
 class MyHTTPServer(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
@@ -7,6 +8,7 @@ class MyHTTPServer(BaseHTTPRequestHandler):
         self.end_headers()
         message = "Hello world from My HTTP Server!"
         self.wfile.write(message.encode())
+
 
 server_adress = ('127.0.0.1', 32001)
 httpd = HTTPServer(server_adress, MyHTTPServer)

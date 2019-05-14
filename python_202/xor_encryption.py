@@ -10,6 +10,7 @@ def generate_key():
 def xor(message, key):
     return "".join([chr(ord(c1) ^ ord(c2)) for (c1, c2) in zip(message, key)])
 
+
 def main():
     key = generate_key()
     print(f'[+++] Simple XOR Encryption/Decryption [+++]')
