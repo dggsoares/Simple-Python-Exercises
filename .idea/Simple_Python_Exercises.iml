@@ -5,7 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/python_101" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/python_201" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7 (HTTPS_Python_Reverse_Shell)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
