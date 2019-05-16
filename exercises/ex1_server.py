@@ -1,7 +1,6 @@
 import time
 
-from exercises import *
-from custom_logger import *
+from exercises.exercises import *
 
 
 class CustomTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):

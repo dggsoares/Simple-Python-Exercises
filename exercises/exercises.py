@@ -1,8 +1,4 @@
-import socketserver
-import threading
-import random
-import base64
-from custom_logger import *
+from exercises.exercises import *
 
 ZEN_OF_PYTHON = [
     'Beautiful is better than ugly.',
