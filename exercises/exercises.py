@@ -245,7 +245,7 @@ class Ex16(Exercise):
 class SocketSample(Exercise):
     def __init__(self, request, client_address, server):
         self.name = 'SocketSample'
-        self.description = 'Just a socket sample!'
+        self.description = 'Just a socket samples!'
         self.welcome = random.choice(ZEN_OF_PYTHON).encode()
         Exercise.__init__(self, request, client_address, server)
 

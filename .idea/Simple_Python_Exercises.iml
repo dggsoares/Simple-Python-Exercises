@@ -6,7 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/python_201" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/knockd" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/exercises" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/sample" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/samples" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7 (HTTPS_Python_Reverse_Shell)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
