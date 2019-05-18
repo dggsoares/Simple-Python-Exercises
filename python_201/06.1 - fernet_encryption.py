@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 from cryptography.fernet import Fernet
 
 print(f'[+++] Fernet Encryption/Decryption tool [+++]')
@@ -10,5 +13,3 @@ cipher_text = cipher_suite.encrypt(message.encode())
 print(f'\t[|] Message encrypted: {cipher_text.decode()}')
 plain_text = cipher_suite.decrypt(cipher_text)
 print(f'\t[|] Message decrypted: {plain_text.decode()}')
-
-#TODO criptografar um arquivo

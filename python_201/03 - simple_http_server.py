@@ -13,7 +13,7 @@ class MyHTTPServer(BaseHTTPRequestHandler):
         self.wfile.write(message.encode())
 
 
-server_adress = ('127.0.0.1', 32001)
+server_adress = ('', 32001)
 httpd = HTTPServer(server_adress, MyHTTPServer)
 print('Running server...')
 httpd.serve_forever()

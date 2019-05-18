@@ -23,8 +23,8 @@ def main():
     print(f'\t [|] Key: {key[:25]}')
     print(f'\t [|] Key size: {len(key)}')
     print(f'\t [|] Message: {message}')
-    print(f'\t [|] Encrypted message: {repr(encrypted_message)}')
-    print(f'\t [|] Decrypted message: {(xor(encrypted_message, key))}')
+    print(f'\t [|] Encrypted message: {encrypted_message}')
+    print(f'\t [|] Decrypted message: {decrypted_message}')
 
 
 if __name__ == '__main__':

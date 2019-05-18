@@ -50,24 +50,24 @@ def create_keys():
     return private_key, public_key
 
 
-def encrypt_message(key, message):
-    encrypted_message = key.encrypt(
+def encrypt_message(public_key, message):
+    encrypted_message = public_key.encrypt(
         message,
         padding.OAEP(
             mgf=padding.MGF1(algorithm=hashes.SHA256()),
-            algorithm=hashes.SHA256(),
+            algorithm=hashes.SHA512(),
             label=None
         )
     )
     return encrypted_message
 
 
-def decrypt_message(key, message):
-    original_message = key.decrypt(
+def decrypt_message(private_key, message):
+    original_message = private_key.decrypt(
         message,
         padding.OAEP(
             mgf=padding.MGF1(algorithm=hashes.SHA256()),
-            algorithm=hashes.SHA256(),
+            algorithm=hashes.SHA512(),
             label=None
         )
     )
@@ -106,19 +106,18 @@ def decrypt_file(key, file):
 
 def main():
     private_key, public_key = create_keys()
-    encrypt_file(public_key, 'file.txt')
-    decrypt_file(private_key, 'file.txt.enc')
-    # write_keys_on_disk(private_key, public_key)
-    # private_key, public_key = load_keys_from_disk()
-    # print(f'[+++] Simple RSA Encryption/Decryption [+++]')
-    # message = input(' [X] Message to encrypt: ').encode()
-    # encrypted_message = encrypt_message(public_key, message)
-    # decrypted_message = decrypt_message(private_key, encrypted_message)
-    # print(f'\t\t Message: {message}')
-    # print(f'\t\t Encrypted message: {encrypted_message[:25]}')
-    # print(f'\t\t Decrypted message: {decrypted_message}')
+    write_keys_on_disk(private_key, public_key)
+    print(f'[+] Simple RSA Encryption/Decryption [+]')
+    message = input(' | \t[X] Message to encrypt: ').encode()
+    encrypted_message = encrypt_message(public_key, message)
+    decrypted_message = decrypt_message(private_key, encrypted_message)
+    print(f' | \t | Message: {message}')
+    print(f' | \t | Encrypted message: {encrypted_message[:25]}')
+    print(f' | \t | Decrypted message: {decrypted_message}')
+    print(' | \t[X] -------------------------- [X]')
+    print(f'[+] ------------------------------- [+]')
+
 
 
 if __name__ == '__main__':
     main()
-    #TODO criptografar uma mensagem
