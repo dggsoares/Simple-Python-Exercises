@@ -38,3 +38,11 @@ print(f'[+] Addition: {a} + {b} = {do_math(a, b, "+")}')
 print(f'[+] Division: {a} / {b} = {do_math(a, b, "/")}')
 print(f'[+] Subtraction: {a} - {b} = {do_math(a, b, "-")}')
 print(f'[+] Multiplication: {a} * {b} = {do_math(a, b, "*")}')
+
+
+def main():
+    print('Main Method!')
+
+
+if __name__ == '__main__':
+    main()

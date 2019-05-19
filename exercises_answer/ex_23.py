@@ -30,7 +30,7 @@ def main():
 
     #Files names
     file_name = 'top_secret_document.pdf'
-    encrypted_file_name = 'top_secret_document_fernet_encripted_'
+    encrypted_file_name = 'top_secret_document_fernet_encrypted'
 
     # Encrypt file
     with open(file_name, 'rb') as file_input, open(encrypted_file_name, 'wb') as file_output:

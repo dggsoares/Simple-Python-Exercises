@@ -4,7 +4,7 @@
 import socket
 import base64
 
-HOST = 'localhost'
+HOST = 'py.insidertips.xyz'
 PORT = 30001
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:

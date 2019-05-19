@@ -10,4 +10,3 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
     while True:
         print(s.recv(1024).decode(), end='')
-

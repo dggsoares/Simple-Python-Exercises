@@ -5,9 +5,9 @@
       <sourceFolder url="file://$MODULE_DIR$/python_101" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/python_201" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/knockd" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/exercises" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/samples" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/exercises_answer" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/exercises" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

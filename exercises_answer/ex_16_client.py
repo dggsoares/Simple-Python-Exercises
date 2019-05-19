@@ -3,7 +3,7 @@
 
 import socket
 
-HOST = 'localhost'
+HOST = 'py.insidertips.xyz'
 PORT = 30045
 
 
