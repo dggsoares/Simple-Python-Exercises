@@ -14,7 +14,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     print(s.recv(2048).decode())
 
     # Response
-    message = 'Hello Word!'.encode()
+    message = 'Hello World!'.encode()
     s.send(message)
     print(f'Message sent: {message}\n')
 
