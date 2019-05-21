@@ -29,35 +29,9 @@ for index, target in enumerate(targets):
     print(f'{index} : {target["ip"]}')
 
     lookup = IPWhois(target['ip']).lookup_whois()
-
-    # Target information
-    # For equivalent
-    # for line in lookup['nets']:
-    #     for cidr in line['cidr'].replace(' ', '').split(','):
-    #         print(cidr)
-
     cidrs = [cidr for line in lookup['nets'] for cidr in line['cidr'].replace(' ', '').split(',')]
-
-    # For equivalent
-    #     for line in lookup['nets']:
-    #         if line['description'] is not None:
-    #             print(line['description'].replace('\n', ''))
-
     description = [line['description'].replace('\n', '') for line in lookup['nets'] if line['description'] is not None]
-
-    # For equivalent
-    #     for line in lookup['nets']:
-    #         if line['address'] is not None:
-    #             print(line['address'].replace('\n', ''))
-
     address = [line['address'].replace('\n', '') for line in lookup['nets'] if line['address'] is not None]
-
-    # For equivalent
-    # for line in lookup['nets']:
-    #     if line['emails'] if not None:
-    #         for email in line['emails']:
-    #             print(email)
-
     emails = [email for line in lookup['nets'] if line['emails'] if not None for email in line['emails']]
 
     # Information retrivied

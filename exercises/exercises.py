@@ -75,8 +75,6 @@ class Ex14(Exercise):
           $$$$$$$$$$""""           ""$$$$$$$$$$$"
           "$$$$$"                      ""$$$$""
             $$$"                         $$$$"
-
-    Welcome to IV International Cyber Defense Course
                 Enjoy Offensive Python!!!
          EXERCISE 1.4 - Echo Server With Sockets
 '''.encode()

