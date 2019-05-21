@@ -1,2 +1,4 @@
-# Simple_Python_Exercises
-Simple exercises develop to learn Python language
+# Simple Python Exercises
+Simple exercises developed to learn Python language
+
+Enjoy!
